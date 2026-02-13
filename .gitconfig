@@ -1,0 +1,38 @@
+[alias]
+  a = add
+  au = add -u
+  b = branch
+  ci = commit
+  ca = commit --amend
+  cm = commit -m
+  cl = clone
+  co = checkout
+  d = diff
+  dc = diff --cached
+  f = fetch
+  fpl = !git fetch --all && git reset --hard origin/main
+  l = log --graph --abbrev-commit --date=relative
+  lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
+  lp = !git l --first-parent
+  m = merge
+  mm = merge origin/master
+  pl = pull
+  pr = pull --rebase
+  ps = push
+  po = push origin HEAD
+  pof = !git po -f
+  rb = rebase
+  rs = restore --staged
+  s = status -sb
+  st = status
+  sq = !git reset --soft master && git ci
+  z = !git co @{-1}
+
+  # Don't use that often, may remove later
+  aa = !git ci -a --amend --no-edit
+  la = !git lp --all
+  ls = !git --no-pager lp --pretty=oneline master..HEAD
+  u = !git co master && git pull origin master && git z
+  um = !git u && git merge master
+  ur = !git u && git rebase master
+
