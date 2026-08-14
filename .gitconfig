@@ -36,3 +36,5 @@
   um = !git u && git merge master
   ur = !git u && git rebase master
 
+[credential]
+	helper = osxkeychain
